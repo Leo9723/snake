@@ -37,7 +37,7 @@ export default {
         background-color: rgb(235, 13, 5);
     }
     .grid{
-        width: 516px;
+        width: 520px;
         display: flex;
         flex-wrap: wrap;
         margin: 0 auto;
