@@ -99,8 +99,8 @@ span{
         background-size: cover;
     }
     .grid{
-        width: 500px;
-        height: 500px;
+        width: 600px;
+        height: 600px;
         display: flex;
         flex-wrap: wrap;
         margin: 0 auto;
@@ -124,8 +124,8 @@ span{
             height: 115vw;
         }
         .grid{
-            width: 85vw;
-            height: 85vw;
+            width: 95vw;
+            height: 95vw;
             border: 5vw solid rgb(71, 26, 0);
         }
   }

@@ -6,5 +6,6 @@ export const store = reactive({
     food: null,
     active: false,
     timeout: undefined,
+    loose: false,
     direction: "left",
 })
