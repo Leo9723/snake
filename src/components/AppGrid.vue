@@ -59,6 +59,7 @@ img {
 }
 span{
     border: 5px solid white;
+    border-radius: 30px;
     color: white;
     padding: 30px 50px;
     cursor: pointer;
@@ -88,7 +89,7 @@ span{
         justify-content: center;
         align-items: center;
         background-color: rgb(121, 67, 17);
-        transition: all 0.25s;
+        transition: all 0.20s;
     }
     .bkg-ok{
         background-color: rgb(54, 119, 0);

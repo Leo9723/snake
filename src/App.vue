@@ -15,6 +15,7 @@ export default {
   },
   methods: {
     right(){
+      this.store.active = true
       clearTimeout(this.store.timeout)
       this.store.direction = "right"
       this.store.timeout = setInterval(() => {
@@ -32,6 +33,7 @@ export default {
         }, 250);
     },
     left(){
+      this.store.active = true
       clearTimeout(this.store.timeout)
       this.store.direction = "left"
       this.store.timeout = setInterval(() => {
@@ -57,6 +59,7 @@ export default {
         }, 250);
     },
     up(){
+      this.store.active = true
       clearTimeout(this.store.timeout)
       this.store.direction = "up"
       this.store.timeout = setInterval(() => {
@@ -80,6 +83,7 @@ export default {
           }, 250);
     },
     down(){
+      this.store.active = true
       clearTimeout(this.store.timeout)
       this.store.direction = "down"
       this.store.timeout = setInterval(() => {
