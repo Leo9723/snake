@@ -87,6 +87,7 @@ span{
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 2;
 }
     .cell{
         width: calc(100% / 10);
