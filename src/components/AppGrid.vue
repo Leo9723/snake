@@ -41,6 +41,12 @@ export default {
         </div>
         <div class="grid">
             <div v-for="(cell, index) in 100" :key="index" :class="(this.store.position.includes(cell) && this.store.position[0] == cell && this.store.direction == 'left') ? 'cell bkg-ok left' : (this.store.position.includes(cell) && this.store.position[0] == cell && this.store.direction == 'right') ? 'cell bkg-ok right' : (this.store.position.includes(cell) && this.store.position[0] == cell && this.store.direction == 'up') ? 'cell bkg-ok up' : (this.store.position.includes(cell) && this.store.position[0] == cell && this.store.direction == 'down') ? 'cell bkg-ok down' : (this.store.position.includes(cell)) ? 'cell bkg-ok' :(this.store.food == cell) ? 'cell bkg-food' : 'cell'">
+                <div v-if="this.store.position[0] == cell" :class="(this.store.position.includes(cell) && this.store.position[0] == cell && this.store.direction == 'left') ? 'eye-left' : (this.store.position.includes(cell) && this.store.position[0] == cell && this.store.direction == 'right') ? 'eye-right' : (this.store.position.includes(cell) && this.store.position[0] == cell && this.store.direction == 'up') ? 'eye-up' : (this.store.position.includes(cell) && this.store.position[0] == cell && this.store.direction == 'down') ? 'eye-down' : ''">
+                    <i class="fa-solid fa-circle"></i>
+                </div>
+                <div v-if="this.store.position[0] == cell" :class="(this.store.position.includes(cell) && this.store.position[0] == cell && this.store.direction == 'left') ? 'eye-left' : (this.store.position.includes(cell) && this.store.position[0] == cell && this.store.direction == 'right') ? 'eye-right' : (this.store.position.includes(cell) && this.store.position[0] == cell && this.store.direction == 'up') ? 'eye-up' : (this.store.position.includes(cell) && this.store.position[0] == cell && this.store.direction == 'down') ? 'eye-down' : ''">
+                    <i class="fa-solid fa-circle"></i>
+                </div>
             </div>
         </div>
         <div class="score">
@@ -89,10 +95,11 @@ span{
         justify-content: center;
         align-items: center;
         background-color: rgb(121, 67, 17);
-        transition: all 0.20s;
+        transition: all 0.10s;
     }
     .bkg-ok{
         background-color: rgb(54, 119, 0);
+        position: relative;
     }
     .bkg-food{
         background-image: url(/apple.png);
@@ -117,6 +124,74 @@ span{
     }
     .down{
     border-radius: 0% 0% 50% 50%;
+    }
+    .eye-left{
+        color: black;
+        font-size: xx-small;
+        padding: 3px 3px;
+        background-color: white;
+        border-radius: 50%;
+        position: absolute;
+        transition: all 0.10s;
+    }
+    .eye-left:first-child{
+        top: 0px;
+        left: 3px;
+    }
+    .eye-left:last-child{
+        bottom: 0px;
+        left: 3px;
+    }
+    .eye-right{
+        color: black;
+        font-size: xx-small;
+        padding: 3px 3px;
+        background-color: white;
+        border-radius: 50%;
+        position: absolute;
+        transition: all 0.10s;
+    }
+    .eye-right:first-child{
+        top: 0px;
+        right: 3px;
+    }
+    .eye-right:last-child{
+        bottom: 0px;
+        right: 3px;
+    }
+    .eye-up{
+        color: black;
+        font-size: xx-small;
+        padding: 3px 3px;
+        background-color: white;
+        border-radius: 50%;
+        position: absolute;
+        transition: all 0.10s;
+    }
+    .eye-up:first-child{
+        top: 3px;
+        left: 0px;
+    }
+    .eye-up:last-child{
+        top: 3px;
+        right: 0px;
+    }
+    .eye-down{
+        color: black;
+        font-size: xx-small;
+        padding: 3px 3px;
+        background-color: white;
+        border-radius: 50%;
+        position: absolute;
+        transition: all 0.10s;
+    }
+    .eye-down:first-child{
+        bottom: 3px;
+        left: 0px;
+    }
+    .eye-down:last-child{
+        bottom: 3px;
+        right: 0px;
     }
     @media screen and (max-width: 769px){
         .grid-container{
