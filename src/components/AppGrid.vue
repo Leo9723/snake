@@ -28,8 +28,96 @@ export default {
                 }
             }
         }, 250);
-            
+        },
+        getClass(cell){
+            if (this.store.position.includes(cell) && this.store.position[0] == cell) {
+                switch (this.store.direction) {
+                    case 'left':
+                        return 'cell left';
+                    case 'right':
+                        return 'cell right';
+                    case 'up':
+                        return 'cell up';
+                    case 'down':
+                        return 'cell down';
+                }
+            }
+            if (this.store.food == cell) {
+                return 'cell bkg-food';
+            }
+            if (this.store.position.includes(cell) && this.store.position[this.store.position.length - 1] == cell) {
+                const prev = this.store.position[this.store.position.length - 2];
+                if (cell - 1 == prev || cell + 9 == prev) {
+                    return 'cell bkg-ok right';
+                }
+                if (cell + 1 == prev || cell - 9 == prev) {
+                    return 'cell bkg-ok left';
+                }
+                if (cell + 10 == prev || cell - 90 == prev) {
+                    return 'cell bkg-ok up';
+                }
+                if (cell - 10 == prev || cell + 90 == prev) {
+                    return 'cell bkg-ok down';
+                }
+            }
+            if (this.store.position.includes(cell)) {
+            const index = this.store.position.indexOf(cell);
+            if (index > 0) {
+                const prev = this.store.position[index - 1];
+                const next = this.store.position[index + 1];
+                if ((((this.store.position[index] - 1) == next) && ((this.store.position[index] + 10) == prev)) 
+                || (((this.store.position[index] - 1) == next) && ((this.store.position[index] - 90) == prev)) 
+                || (((this.store.position[index] + 10) == next) && ((this.store.position[index] - 1) == prev))
+                || (((this.store.position[index] + 10) == next) && ((this.store.position[index] + 9) == prev))
+                || (((this.store.position[index] - 90) == next) && ((this.store.position[index] - 1) == prev))
+                || (((this.store.position[index] + 9) == next) && ((this.store.position[index] - 90) == prev))
+                || (((this.store.position[index] - 90) == next) && ((this.store.position[index] + 9) == prev)) 
+                || (((this.store.position[index] + 9) == next) && ((this.store.position[index] + 10) == prev))) {
+                    return 'cell sxdw';
+                }
+                else if ((((this.store.position[index] - 10) == next) && ((this.store.position[index] - 1) == prev))
+                || (((this.store.position[index] - 1) == next) && ((this.store.position[index] - 10) == prev)) 
+                || (((this.store.position[index] - 1) == next) && ((this.store.position[index] + 90) == prev)) 
+                || (((this.store.position[index] - 10) == next) && ((this.store.position[index] + 9) == prev))
+                || (((this.store.position[index] + 90) == next) && ((this.store.position[index] - 1) == prev))
+                || (((this.store.position[index] + 9) == next) && ((this.store.position[index] + 90) == prev))
+                || (((this.store.position[index] + 90) == next) && ((this.store.position[index] + 9) == prev))
+                || (((this.store.position[index] + 9) == next) && ((this.store.position[index] - 10) == prev))) {
+                    return 'cell sxup';
+                }
+                else if ((((this.store.position[index] - 10) == next) && ((this.store.position[index] + 1) == prev))
+                || (((this.store.position[index] + 1) == next) && ((this.store.position[index] + 90) == prev)) 
+                || (((this.store.position[index] + 1) == next) && ((this.store.position[index] - 10) == prev)) 
+                || (((this.store.position[index] - 10) == next) && ((this.store.position[index] - 9) == prev)) 
+                || (((this.store.position[index] + 90) == next) && ((this.store.position[index] - 9) == prev))
+                || (((this.store.position[index] - 9) == next) && ((this.store.position[index] - 10) == prev))
+                || (((this.store.position[index] - 9) == next) && ((this.store.position[index] + 90) == prev)) 
+                || (((this.store.position[index] + 90) == next) && ((this.store.position[index] + 1) == prev))) {
+                    return 'cell dxup';
+                }
+                else if ((((this.store.position[index] + 10) == next) && ((this.store.position[index] + 1) == prev))
+                || (((this.store.position[index] + 1) == next) && ((this.store.position[index] + 10) == prev))
+                || (((this.store.position[index] + 1) == next) && ((this.store.position[index] - 90) == prev)) 
+                || (((this.store.position[index] + 10) == next) && ((this.store.position[index] - 9) == prev)) 
+                || (((this.store.position[index] - 9) == next) && ((this.store.position[index] - 90) == prev))
+                || (((this.store.position[index] - 90) == next) && ((this.store.position[index] - 9) == prev))
+                || (((this.store.position[index] - 9) == next) && ((this.store.position[index] + 10) == prev))
+                || (((this.store.position[index] - 90) == next) && ((this.store.position[index] + 1) == prev))) {
+                    return 'cell dxdw';
+                }
+                else if ((((this.store.position[index] - 10) == next) && ((this.store.position[index] + 10) == prev)) 
+                || (((this.store.position[index] + 10) == next) && ((this.store.position[index] - 10) == prev)) 
+                || (((this.store.position[index] - 10) == next) && ((this.store.position[index] - 90) == prev)) 
+                || (((this.store.position[index] + 90) == next) && ((this.store.position[index] + 10) == prev)) 
+                || (((this.store.position[index] + 10) == next) && ((this.store.position[index] + 90) == prev)) 
+                || (((this.store.position[index] - 90) == next) && ((this.store.position[index] - 10) == prev))) {
+                    return 'cell orange';
+                }
 
+            }
+            return 'cell bkg-ok';
+        }
+            return 'cell';
         }
     }
 }
@@ -40,7 +128,11 @@ export default {
             <span>GIOCA!</span>
         </div>
         <div class="grid">
-            <div v-for="(cell, index) in 100" :key="index" :class="(this.store.position.includes(cell) && this.store.position[0] == cell && this.store.direction == 'left') ? 'cell bkg-ok left' : (this.store.position.includes(cell) && this.store.position[0] == cell && this.store.direction == 'right') ? 'cell bkg-ok right' : (this.store.position.includes(cell) && this.store.position[0] == cell && this.store.direction == 'up') ? 'cell bkg-ok up' : (this.store.position.includes(cell) && this.store.position[0] == cell && this.store.direction == 'down') ? 'cell bkg-ok down' : (this.store.position.includes(cell)) ? 'cell bkg-ok' :(this.store.food == cell) ? 'cell bkg-food' : 'cell'">
+
+
+            <div v-for="(cell, index) in 100" :key="index" :class="getClass(cell)">
+
+
                 <div v-if="this.store.position[0] == cell" :class="(this.store.position.includes(cell) && this.store.position[0] == cell && this.store.direction == 'left') ? 'eye-left' : (this.store.position.includes(cell) && this.store.position[0] == cell && this.store.direction == 'right') ? 'eye-right' : (this.store.position.includes(cell) && this.store.position[0] == cell && this.store.direction == 'up') ? 'eye-up' : (this.store.position.includes(cell) && this.store.position[0] == cell && this.store.direction == 'down') ? 'eye-down' : ''">
                     <i class="fa-solid fa-circle"></i>
                 </div>
@@ -99,7 +191,8 @@ span{
         transition: all 0.10s;
     }
     .bkg-ok{
-        background-color: rgb(54, 119, 0);
+        background-image: url(/body.png);
+        background-size: cover;
         position: relative;
     }
     .bkg-food{
@@ -115,16 +208,28 @@ span{
         border: 50px solid rgb(71, 26, 0);
     }
     .left{
-    border-radius: 50% 0% 0% 50%;
+        background-image: url(/left.png);
+        background-size: cover;
+        position: relative;
+        border-radius: 50% 0% 0% 50%;
     }
     .right{
-    border-radius: 0% 50% 50% 0%;
+        background-image: url(/right.png);
+        background-size: cover;
+        position: relative;
+        border-radius: 0% 50% 50% 0%;
     }
     .up{
-    border-radius: 50% 50% 0% 0%;
+        background-image: url(/up.png);
+        background-size: cover;
+        position: relative;
+        border-radius: 50% 50% 0% 0%;
     }
     .down{
-    border-radius: 0% 0% 50% 50%;
+        background-image: url(/down.png);
+        background-size: cover;
+        position: relative;
+        border-radius: 0% 0% 50% 50%;
     }
     .eye-left{
         color: black;
@@ -204,5 +309,30 @@ span{
             height: 95vw;
             border: 5vw solid rgb(71, 26, 0);
         }
+  }
+  .sxdw{
+    background-image: url(/sxdw.png);
+    background-size: cover;
+    position: relative;
+  }
+  .dxup{
+    background-image: url(/dxup.png);
+    background-size: cover;
+    position: relative;
+  }
+  .sxup{
+    background-image: url(/sxup.png);
+    background-size: cover;
+    position: relative;
+  }
+  .dxdw{
+    background-image: url(/dxdw.png);
+    background-size: cover;
+    position: relative;
+  }
+  .orange{
+    background-image: url(/vertical.png);
+    background-size: cover;
+    position: relative;
   }
 </style>

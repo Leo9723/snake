@@ -22,12 +22,13 @@ export default {
       this.store.timeout = undefined
       this.store.loose = false
       this.store.direction = "left"
+      this.store.endDirection = "right"
       this.generateFood()
     },
     right(){
       this.store.active = true
       clearTimeout(this.store.timeout)
-      this.store.direction = "right"
+      this.store.direction = "right"      
       this.store.timeout = setInterval(() => {
           if(this.store.position[0] % 10 == 0){
             this.addCell(this.store.position[0])
@@ -35,9 +36,7 @@ export default {
           }
           else{
             this.addCell(this.store.position[0])
-            console.log(this.store.position)
             this.store.position[0] ++
-            console.log(this.store.position[0])
           }
           this.generateMoreFood()  
         }, 250);
@@ -65,6 +64,19 @@ export default {
             this.store.position[0] --
           }
         }
+        if(this.store.position[this.store.position.length - 1] - 1 == this.store.position[this.store.position.length - 2]){
+        this.store.endDirection = 1
+        }
+        else if(this.store.position[this.store.position.length - 1] + 1 == this.store.position[this.store.position.length - 2]){
+          this.store.endDirection = 2
+        }
+        else if(this.store.position[this.store.position.length - 1] + 10 == this.store.position[this.store.position.length - 2]){
+          this.store.endDirection = 3
+        }
+        else if(this.store.position[this.store.position.length - 1] - 10 == this.store.position[this.store.position.length - 2]){
+          this.store.endDirection = 4
+        }
+        console.log(this.store.endDirection)
         this.generateMoreFood()       
         }, 250);
     },
@@ -89,6 +101,19 @@ export default {
           this.addCell(this.store.position[0])
           this.store.position[0] -= 10
         }
+        if(this.store.position[this.store.position.length - 1] - 1 == this.store.position[this.store.position.length - 2]){
+        this.store.endDirection = 1
+        }
+        else if(this.store.position[this.store.position.length - 1] + 1 == this.store.position[this.store.position.length - 2]){
+          this.store.endDirection = 2
+        }
+        else if(this.store.position[this.store.position.length - 1] + 10 == this.store.position[this.store.position.length - 2]){
+          this.store.endDirection = 3
+        }
+        else if(this.store.position[this.store.position.length - 1] - 10 == this.store.position[this.store.position.length - 2]){
+          this.store.endDirection = 4
+        }
+        console.log(this.store.endDirection)
         this.generateMoreFood()           
           }, 250);
     },
@@ -111,7 +136,20 @@ export default {
         else{
           this.addCell(this.store.position[0])
           this.store.position[0] += 10
-        } 
+        }
+        if(this.store.position[this.store.position.length - 1] - 1 == this.store.position[this.store.position.length - 2]){
+        this.store.endDirection = 1
+        }
+        else if(this.store.position[this.store.position.length - 1] + 1 == this.store.position[this.store.position.length - 2]){
+          this.store.endDirection = 2
+        }
+        else if(this.store.position[this.store.position.length - 1] + 10 == this.store.position[this.store.position.length - 2]){
+          this.store.endDirection = 3
+        }
+        else if(this.store.position[this.store.position.length - 1] - 10 == this.store.position[this.store.position.length - 2]){
+          this.store.endDirection = 4
+        }
+        console.log(this.store.endDirection)
         this.generateMoreFood()          
           }, 250);
     },
@@ -140,7 +178,6 @@ export default {
           this.generate()
   
           this.store.snakeLength ++
-          console.log(this.store.snakeLength)
         }
         }
     },

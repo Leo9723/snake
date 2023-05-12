@@ -8,4 +8,5 @@ export const store = reactive({
     timeout: undefined,
     loose: false,
     direction: "left",
+    endDirection: 1
 })
